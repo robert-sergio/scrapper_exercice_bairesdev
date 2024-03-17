@@ -1,6 +1,6 @@
 from threading import Thread
-from crawlers.istockphoto import IstockPhoto
-from export.export import Export
+from src.crawlers.istockphoto import IstockPhoto
+from src.export.export import Export
 
 
 class Extractor(IstockPhoto):
@@ -28,9 +28,3 @@ class Extractor(IstockPhoto):
 
     def export(self):
         return Export(self.itens).as_sqlite()
-
-
-if __name__ == "__main__":
-    bot = Extractor()
-    bot.run(num_pages=1)
-    bot.export()
