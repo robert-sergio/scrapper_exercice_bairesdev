@@ -33,6 +33,3 @@ class IstockPhoto:
             }
             self.itens.append(data)
         self.message = f"{len(self.itens)} dog pages captured from website"
-
-    def __str__(self) -> str:
-        return self.message

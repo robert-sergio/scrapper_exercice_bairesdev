@@ -7,13 +7,13 @@ class Export:
         self.itens = itens
         self.df = pd.DataFrame(self.itens)
 
-    def as_sqlite(self):
-        conn = sq.connect("db\db_crawlers.sqlite")
+    def as_sqlite(self, path):
+        conn = sq.connect(path)
         self.df.to_sql("crawlers", conn, if_exists="replace", index=False)
         conn.close()
 
-    def as_excel(self, filename):
-        self.df.to_excel(filename)
+    def as_excel(self, path):
+        self.df.to_excel(path)
 
-    def as_csv(self, filename):
-        self.df.to_excel(filename)
+    def as_csv(self, path):
+        self.df.to_csv(path)

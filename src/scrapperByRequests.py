@@ -27,4 +27,4 @@ class Extractor(IstockPhoto):
             x.join()
 
     def export(self):
-        return Export(self.itens).as_sqlite()
+        return Export(self.itens).as_sqlite("db\\db_crawlers.sqlite")

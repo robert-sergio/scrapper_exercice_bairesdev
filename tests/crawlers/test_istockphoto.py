@@ -4,6 +4,14 @@ from src.crawlers.istockphoto import IstockPhoto
 from mock_response import response_mocks
 
 
+def test_instance():
+    instance = IstockPhoto()
+    assert (
+        instance.header.get("User-Agent")
+        == "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+    )
+
+
 @pytest.fixture
 def mock_get_class():
     with mock.patch("requests.get") as mock_get_class:
