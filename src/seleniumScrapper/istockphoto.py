@@ -14,6 +14,7 @@ class IstockPhoto:
         self.login = "robert.sergio.eng@gmail.com"
         self.password = "JVinxss6bhCkQSL"
         self.url = "https://www.istockphoto.com/"
+        self.login_url = "https://www.istockphoto.com/br/sign-in?returnurl=%2Fbr"
 
         self.driver = Driver().init_driver()
 
@@ -37,10 +38,7 @@ class IstockPhoto:
             self.itens.append(data)
 
     def handle_login(self):
-        self.driver.get(self.url)
-        self.driver.find_element(
-            By.XPATH, '//*[@id="header-wrapper"]/div/div/header/nav[2]/ul/span[2]/li[1]'
-        ).click()
+        self.driver.get(self.login_url)
         self.driver.find_element(By.XPATH, '//*[@id="new_session_username"]').send_keys(
             self.login
         )

@@ -10,8 +10,8 @@ class Driver:
         self.strategy = ""
         self.options = Options()
         self.options.add_argument("--start-maximized")
-        # self.options.page_load_strategy = "none"
-        # self.options.add_argument("--headless")
+        self.options.add_argument("log-level=3")
+        self.options.add_argument("--headless")
 
     def init_driver(self):
         return webdriver.Chrome(
