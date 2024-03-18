@@ -1,6 +1,6 @@
 # scrapper exercices for bairesdev
 
-> Scrapper used to capture data from www.freeimages.com
+> Scrappers used to capture data from www.freeimages.com as an exercise to BairesDev
 
 ### Setup
 
@@ -12,11 +12,9 @@
 
 ### How to run this project
 
-* install dependencies by running make dependencies
-* enable poetry environment by running poetry shell
-* Run the main code to execute the project
+* Run make dependencies to install python dependencies
+* Run make scrapp to execute the scrappers
 * Run make tests to execute tests
-
 
 ## About this Project ?
 
@@ -37,9 +35,12 @@ In this approach I'am collecting all the data from the site and also developing 
 
 ### Other possible approaches ( not implemented )
 
-* Pyppeteer
-* Playwright
+* There are also other libraries available to scrapp websites, like Pyppeteer and Playwright. Both of them has the async approach but in this use case there's no need to follow this approach.
 
+#### Data Scrapped
+
+The Sqlite database is saved in db folder. There are two tables in the database to sepparate data captured by Selenium and by Requests.
+The scrappers are retrieving img_url, alt and the page of the image and saving the current_time too.
 
 ## Questions !
 
@@ -49,6 +50,8 @@ In this approach I'am collecting all the data from the site and also developing 
 
 ## How to scale ?
 
+#### Code Way
+
 * I used the Threading library to make the get requests run parallellized in order to speed up the crawler.
 * This is a code manner to scale up the crawler and bring more data.
 * In this example, the crawler captured One thousand items in less than 10 seconds, then, based on this test, we would be able to capture 360K items from website per hour.
@@ -56,3 +59,8 @@ In this approach I'am collecting all the data from the site and also developing 
 > 100 items/1sec * 60 secs * 60 min = 360K items per hour
 
 * We just have to be carefull by using this approach because it can cause troubles to the crawled website, and the website owners can also block our IP.
+* In order to avoid being blocked we can also use a VPN or a Proxy Server
+
+#### Cloud Way
+
+* We can use an AWS lambda to do the job. AWS lambdas are ephemeral and their IP changes across the time, so we can scale the scrapping avoiding the IP blocking.
