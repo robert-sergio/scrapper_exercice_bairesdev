@@ -1,11 +1,11 @@
-from seleniumScrapper.config.webdriver import Driver
+from src.seleniumScrapper.config.webdriver import Driver
 from selenium.webdriver.common.by import By
 from datetime import datetime
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class IstockPhoto:
+class FreeImages:
 
     def __init__(self) -> None:
         self.page = 1

@@ -1,11 +1,11 @@
 import pytest
 from unittest import mock
-from src.requestsScrapper.istockphoto import IstockPhoto
+from src.requestsScrapper.freeImages import FreeImages
 from mock_response import response_mocks
 
 
 def test_instance():
-    instance = IstockPhoto()
+    instance = FreeImages()
     assert (
         instance.header.get("User-Agent")
         == "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
@@ -27,7 +27,7 @@ def test_response_error(mock_get_class):
     mock_get.content = mocked.content
     mock_get_class.return_value = mock_get
 
-    instance = IstockPhoto()
+    instance = FreeImages()
     instance.dogs()
     assert instance.message == "Could not get data: status_code 401"
 
@@ -41,7 +41,7 @@ def test_response_parsing(mock_get_class):
     mock_get.content = mocked.content
     mock_get_class.return_value = mock_get
 
-    instance = IstockPhoto()
+    instance = FreeImages()
     instance.dogs()
     print(instance.message)
-    assert instance.message == "60 dog pages captured from website"
+    assert instance.message == "73 dog pages captured from website"

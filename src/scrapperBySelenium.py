@@ -1,9 +1,9 @@
 from threading import Thread
-from seleniumScrapper.istockphoto import IstockPhoto
-from export.export import Export
+from src.seleniumScrapper.freeImages import FreeImages
+from src.export.export import Export
 
 
-class ExtractorSelenium(IstockPhoto):
+class ExtractorSelenium(FreeImages):
 
     def __init__(self) -> None:
         self.itens = []

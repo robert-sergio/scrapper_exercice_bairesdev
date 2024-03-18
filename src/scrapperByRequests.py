@@ -1,9 +1,9 @@
 from threading import Thread
-from src.requestsScrapper.istockphoto import IstockPhoto
+from src.requestsScrapper.freeImages import FreeImages
 from src.export.export import Export
 
 
-class Extractor(IstockPhoto):
+class Extractor(FreeImages):
     def __init__(self) -> None:
         self.itens = []
         self.status = "initiated"
