@@ -10,10 +10,11 @@ def test_instance():
 
 def test_sqlite():
     path = "tests\\export\\teste.sqlite"
+    db_name = "test"
     if os.path.exists(path):
         os.remove(path)
     instance = Export(dummy_itens)
-    instance.as_sqlite(path)
+    instance.as_sqlite(path, db_name)
     assert os.path.exists(path)
     os.remove(path)
 
