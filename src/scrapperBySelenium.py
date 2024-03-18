@@ -17,7 +17,6 @@ class ExtractorSelenium(FreeImages):
     def run(self, num_pages):
         self.handle_login()
         self.iterate(num_pages)
-        # self.handle_logout()
         self.status = f"finished, {len(self.itens)} itens found in website"
 
     def iterate(self, num_pages):

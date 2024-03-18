@@ -51,19 +51,3 @@ class FreeImages:
             self.password
         )
         self.driver.find_element(By.XPATH, '//*[@id="btn-signin-submit"]').click()
-
-    def handle_logout(self):
-        if self.login in self.driver.page_source:
-            self.driver.find_element(
-                By.XPATH,
-                '//*[@id="header-wrapper"]/div/div/header/nav[2]/ul/li[2]/button',
-            ).click()
-            WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable(
-                    (
-                        By.XPATH,
-                        '//*[@id="header-wrapper"]/div/div/header/nav[2]/ul/nav/div/aside/div[4]/ul/li/a',
-                    )
-                )
-            ).click()
-        self.driver.quit()
