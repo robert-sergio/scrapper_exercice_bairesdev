@@ -16,7 +16,9 @@ class ExtractorSelenium(IstockPhoto):
         return self.status
 
     def run(self, num_pages):
+        self.handle_login()
         self.iterate(num_pages)
+        self.handle_logout()
         self.status = f"finished"
 
     def iterate(self, num_pages):

@@ -1,6 +1,8 @@
 from seleniumScrapper.config.webdriver import Driver
 from selenium.webdriver.common.by import By
 from datetime import datetime
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class IstockPhoto:
@@ -9,9 +11,11 @@ class IstockPhoto:
         self.page = 1
         self.itens = []
         self.message = ""
-        self.driver = Driver().init_driver()
+        self.login = "robert.sergio.eng@gmail.com"
+        self.password = "JVinxss6bhCkQSL"
+        self.url = "https://www.istockphoto.com/"
 
-    def retry(self): ...
+        self.driver = Driver().init_driver()
 
     def dogs(self):
         url = f"https://www.istockphoto.com/br/search/2/image?mediatype=photography&phrase=dog&page={self.page}"
@@ -31,3 +35,32 @@ class IstockPhoto:
                 "date_happened": datetime.now(),
             }
             self.itens.append(data)
+
+    def handle_login(self):
+        self.driver.get(self.url)
+        self.driver.find_element(
+            By.XPATH, '//*[@id="header-wrapper"]/div/div/header/nav[2]/ul/span[2]/li[1]'
+        ).click()
+        self.driver.find_element(By.XPATH, '//*[@id="new_session_username"]').send_keys(
+            self.login
+        )
+        self.driver.find_element(By.XPATH, '//*[@id="new_session_password"]').send_keys(
+            self.password
+        )
+        self.driver.find_element(By.XPATH, '//*[@id="sign_in"]').click()
+
+    def handle_logout(self):
+        if self.login in self.driver.page_source:
+            self.driver.find_element(
+                By.XPATH,
+                '//*[@id="header-wrapper"]/div/div/header/nav[2]/ul/li[2]/button',
+            ).click()
+            WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(
+                    (
+                        By.XPATH,
+                        '//*[@id="header-wrapper"]/div/div/header/nav[2]/ul/nav/div/aside/div[4]/ul/li/a',
+                    )
+                )
+            ).click()
+        self.driver.quit()

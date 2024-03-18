@@ -9,6 +9,7 @@ class Driver:
     def __init__(self) -> None:
         self.strategy = ""
         self.options = Options()
+        self.options.add_argument("--start-maximized")
         # self.options.page_load_strategy = "none"
         # self.options.add_argument("--headless")
 
