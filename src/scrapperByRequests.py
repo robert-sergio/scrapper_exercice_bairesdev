@@ -8,7 +8,7 @@ class Extractor(FreeImages):
     def __init__(self) -> None:
         self.itens = []
         self.status = "initiated"
-        self.path_db = "db\\db_crawlers.sqlite"
+        self.path_db = "db/db_crawlers.sqlite"
         self.tb_db = "crawlers_request"
         super().__init__()
         logger.info("Started Requests & BeautifulSoup Crawler")

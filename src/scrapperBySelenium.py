@@ -8,7 +8,7 @@ class ExtractorSelenium(FreeImages):
     def __init__(self) -> None:
         self.itens = []
         self.status = "initiated"
-        self.path_db = "db\\db_crawlers.sqlite"
+        self.path_db = "db/db_crawlers.sqlite"
         self.tb_db = "crawlers_selenium"
         logger.info("Started Selenium Crawler")
         super().__init__()
