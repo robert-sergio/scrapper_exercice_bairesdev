@@ -16,7 +16,7 @@ class Extractor(FreeImages):
 
     def run(self, num_pages):
         self.iterate(num_pages)
-        self.status = f"finished"
+        self.status = f"finished, {len(self.itens)} itens found in website"
 
     def iterate(self, num_pages):
         p = []

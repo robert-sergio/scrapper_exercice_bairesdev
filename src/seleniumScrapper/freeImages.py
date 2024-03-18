@@ -11,24 +11,29 @@ class FreeImages:
         self.page = 1
         self.itens = []
         self.message = ""
-        self.login = "robert.sergio.eng@gmail.com"
+        self.login = "dummyEmail@email.com"
         self.password = "JVinxss6bhCkQSL"
-        self.url = "https://www.istockphoto.com/"
-        self.login_url = "https://www.istockphoto.com/br/sign-in?returnurl=%2Fbr"
+        self.url = "https://www.freeimages.com"
+        self.login_url = "https://www.freeimages.com/signin"
+        self.mapped_banners = ["Check our Plans"]
 
         self.driver = Driver().init_driver()
 
     def dogs(self):
-        url = f"https://www.istockphoto.com/br/search/2/image?mediatype=photography&phrase=dog&page={self.page}"
+        url = f"https://www.freeimages.com/search/dogs/{self.page}"
         self.driver.get(url)
         divs = self.driver.find_elements(
             By.XPATH,
-            "/html/body/div[2]/section/div/main/div/div/div[2]/div/div[3]/div",
+            '//*[@id="content-wrapper"]/div[3]/div[2]/div[2]/div',
         )
 
         for div in divs:
-            src = div.find_element(By.TAG_NAME, "img").get_attribute("src")
+
             alt = div.find_element(By.TAG_NAME, "img").get_attribute("alt")
+            src = div.find_element(By.TAG_NAME, "img").get_attribute("src")
+
+            if alt in self.mapped_banners:
+                continue
             data = {
                 "page": url,
                 "url": src,
@@ -39,13 +44,13 @@ class FreeImages:
 
     def handle_login(self):
         self.driver.get(self.login_url)
-        self.driver.find_element(By.XPATH, '//*[@id="new_session_username"]').send_keys(
+        self.driver.find_element(By.XPATH, '//*[@id="username-input"]').send_keys(
             self.login
         )
-        self.driver.find_element(By.XPATH, '//*[@id="new_session_password"]').send_keys(
+        self.driver.find_element(By.XPATH, '//*[@id="password-input"]').send_keys(
             self.password
         )
-        self.driver.find_element(By.XPATH, '//*[@id="sign_in"]').click()
+        self.driver.find_element(By.XPATH, '//*[@id="btn-signin-submit"]').click()
 
     def handle_logout(self):
         if self.login in self.driver.page_source:
