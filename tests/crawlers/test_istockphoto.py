@@ -1,6 +1,6 @@
 import pytest
 from unittest import mock
-from src.crawlers.istockphoto import IstockPhoto
+from src.requestsScrapper.istockphoto import IstockPhoto
 from mock_response import response_mocks
 
 

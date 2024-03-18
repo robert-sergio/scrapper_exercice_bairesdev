@@ -27,9 +27,3 @@ class ExtractorSelenium(IstockPhoto):
 
     def export(self):
         return Export(self.itens).as_sqlite(path=self.path_db, tb_name=self.tb_db)
-
-
-if __name__ == "__main__":
-    bot = ExtractorSelenium()
-    bot.run(10)
-    bot.export()

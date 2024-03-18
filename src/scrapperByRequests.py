@@ -1,5 +1,5 @@
 from threading import Thread
-from src.crawlers.istockphoto import IstockPhoto
+from src.requestsScrapper.istockphoto import IstockPhoto
 from src.export.export import Export
 
 
