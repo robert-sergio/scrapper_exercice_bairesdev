@@ -1,8 +1,7 @@
 from src.seleniumScrapper.config.webdriver import Driver
 from selenium.webdriver.common.by import By
 from datetime import datetime
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from src.logger.logger import logger
 
 
 class FreeImages:
@@ -20,7 +19,8 @@ class FreeImages:
         self.driver = Driver().init_driver()
 
     def dogs(self):
-        url = f"https://www.freeimages.com/search/dogs/{self.page}"
+        page = self.page
+        url = f"https://www.freeimages.com/search/dogs/{page}"
         self.driver.get(url)
         divs = self.driver.find_elements(
             By.XPATH,
@@ -41,6 +41,7 @@ class FreeImages:
                 "date_happened": datetime.now(),
             }
             self.itens.append(data)
+        logger.info(f"{len(divs)} dog images captured from page {page}")
 
     def handle_login(self):
         self.driver.get(self.login_url)
@@ -51,3 +52,4 @@ class FreeImages:
             self.password
         )
         self.driver.find_element(By.XPATH, '//*[@id="btn-signin-submit"]').click()
+        logger.info("Ran Website Login Example")

@@ -14,6 +14,5 @@ def execute_by_selenium():
     bot.export()
 
 
-if __name__ == "__main__":
-    execute_by_requests()
-    execute_by_selenium()
+execute_by_requests()
+execute_by_selenium()
