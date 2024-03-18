@@ -7,9 +7,9 @@ class Export:
         self.itens = itens
         self.df = pd.DataFrame(self.itens)
 
-    def as_sqlite(self, path):
+    def as_sqlite(self, path, tb_name):
         conn = sq.connect(path)
-        self.df.to_sql("crawlers", conn, if_exists="replace", index=False)
+        self.df.to_sql(tb_name, conn, if_exists="replace", index=False)
         conn.close()
 
     def as_excel(self, path):

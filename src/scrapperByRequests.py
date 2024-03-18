@@ -7,6 +7,8 @@ class Extractor(IstockPhoto):
     def __init__(self) -> None:
         self.itens = []
         self.status = "initiated"
+        self.path_db = "db\\db_crawlers.sqlite"
+        self.tb_db = "crawlers_request"
         super().__init__()
 
     def __str__(self) -> str:
@@ -27,4 +29,4 @@ class Extractor(IstockPhoto):
             x.join()
 
     def export(self):
-        return Export(self.itens).as_sqlite("db\\db_crawlers.sqlite")
+        return Export(self.itens).as_sqlite(path=self.path_db, tb_name=self.tb_db)
