@@ -1,4 +1,3 @@
-from threading import Thread
 from src.seleniumScrapper.freeImages import FreeImages
 from src.export.export import Export
 
