@@ -15,7 +15,7 @@ _poetry_shell:
 dependencies: _upgrade _poetry _poetry_install _poetry_shell
 
 test:
-	@pytest test/*
+	python -m pytest --cov
 
 test-coverage:
 	@pytest --cov=scrappers test/*
