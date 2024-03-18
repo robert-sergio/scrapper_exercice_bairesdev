@@ -1,6 +1,7 @@
 from threading import Thread
 from src.requestsScrapper.freeImages import FreeImages
 from src.export.export import Export
+from src.logger.logger import logger
 
 
 class Extractor(FreeImages):
@@ -10,6 +11,7 @@ class Extractor(FreeImages):
         self.path_db = "db\\db_crawlers.sqlite"
         self.tb_db = "crawlers_request"
         super().__init__()
+        logger.info("Started Requests & BeautifulSoup Crawler")
 
     def __str__(self) -> str:
         return self.status

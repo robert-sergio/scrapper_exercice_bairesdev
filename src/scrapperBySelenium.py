@@ -1,5 +1,6 @@
 from src.seleniumScrapper.freeImages import FreeImages
 from src.export.export import Export
+from src.logger.logger import logger
 
 
 class ExtractorSelenium(FreeImages):
@@ -9,6 +10,7 @@ class ExtractorSelenium(FreeImages):
         self.status = "initiated"
         self.path_db = "db\\db_crawlers.sqlite"
         self.tb_db = "crawlers_selenium"
+        logger.info("Started Selenium Crawler")
         super().__init__()
 
     def __str__(self) -> str:
