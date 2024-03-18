@@ -44,4 +44,4 @@ def test_response_parsing(mock_get_class):
     instance = FreeImages()
     instance.dogs()
     print(instance.message)
-    assert instance.message == "73 dog pages captured from website"
+    assert instance.message == "74 dog images captured from website"

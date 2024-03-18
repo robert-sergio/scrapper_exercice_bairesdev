@@ -9,10 +9,10 @@ def test_class_instance():
 def test_method_run():
     instance = Extractor()
     instance.run(1)
-    assert str(instance) == "finished, 73 itens found in website"
+    assert str(instance) == "finished, 73 dog images found in website"
 
 
 def test_method_crawler():
     instance = Extractor()
     instance.run(1)
-    assert str(instance) == "finished, 73 itens found in website"
+    assert str(instance) == "finished, 73 dog images found in website"
