@@ -17,5 +17,10 @@ dependencies: _upgrade _poetry _poetry_install _poetry_shell
 test:
 	python -m pytest --cov
 
-scrapp:
-	python main.py
+scrapp-beautifulsoup:
+	python main.py --scrapper_type beautifullSoup
+
+scrapp-selenium:
+	python main.py --scrapper_type selenium
+
+scrapp-all: scrapp-beautifulsoup scrapp-selenium

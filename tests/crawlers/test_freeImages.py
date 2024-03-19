@@ -1,6 +1,6 @@
 import pytest
 from unittest import mock
-from src.requestsScrapper.freeImages import FreeImages
+from src.beautifulSoupScrapper.freeImages import FreeImages
 from mock_response import response_mocks
 
 

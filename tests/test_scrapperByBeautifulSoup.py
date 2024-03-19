@@ -1,4 +1,4 @@
-from src.scrapperByRequests import Extractor
+from src.scrapperByBeautifulSoup import Extractor
 
 
 def test_class_instance():
