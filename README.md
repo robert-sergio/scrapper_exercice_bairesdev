@@ -1,4 +1,4 @@
-# scrapper exercices for bairesdev
+# scrapper exercises for bairesdev
 
 > Scrappers used to capture data from www.freeimages.com as an exercise to BairesDev
 
