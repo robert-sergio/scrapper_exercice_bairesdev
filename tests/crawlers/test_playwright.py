@@ -22,5 +22,5 @@ def test_get_data():
                 browser = chromium.launch()
                 instance.page = browser.new_page()
 
-                instance.dogs()
-                assert instance.message == "73 dog images captured from page "
+                instance.retrieve_images()
+                assert instance.message == "73 images captured from page "

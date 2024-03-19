@@ -17,7 +17,8 @@ class ExtractorPlayWright(FreeImages):
     def __str__(self) -> str:
         return self.status
 
-    def run(self, num_pages):
+    def run(self, num_pages, uri):
+        self.uri = uri
         with sync_playwright() as playwright:
             chromium = playwright.chromium
             browser = chromium.launch()
@@ -28,7 +29,7 @@ class ExtractorPlayWright(FreeImages):
 
     def iterate(self, num_pages):
         for self.num_page in range(1, num_pages + 1):
-            self.dogs()
+            self.retrieve_images()
 
     def export(self):
         return Export(self.itens).as_sqlite(path=self.path_db, tb_name=self.tb_db)

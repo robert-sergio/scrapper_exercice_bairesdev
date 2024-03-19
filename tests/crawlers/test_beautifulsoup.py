@@ -28,7 +28,7 @@ def test_response_error(mock_get_class):
     mock_get_class.return_value = mock_get
 
     instance = FreeImages()
-    instance.dogs()
+    instance.retrieve_images()
     assert instance.message == "Could not get data: status_code 401"
 
 
@@ -42,6 +42,6 @@ def test_response_parsing(mock_get_class):
     mock_get_class.return_value = mock_get
 
     instance = FreeImages()
-    instance.dogs()
+    instance.retrieve_images()
     print(instance.message)
-    assert instance.message == "74 dog images captured from website"
+    assert instance.message == "74 images captured from website"

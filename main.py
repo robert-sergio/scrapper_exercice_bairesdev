@@ -10,7 +10,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 
-class Scrapper:
+class FreeImagesScrapper:
 
     def __init__(self, scrapper_type) -> None:
         self.scrapper = scrapper_type
@@ -27,9 +27,9 @@ class Scrapper:
     def execute(self):
         self._strategy()
         bot = self.extractor()
-        bot.run(self.num_pages)
+        bot.run(num_pages=self.num_pages, uri="search/dogs/")
         bot.export()
 
 
 if __name__ == "__main__":
-    run = Scrapper(args.scrapper_type).execute()
+    run = FreeImagesScrapper(args.scrapper_type).execute()

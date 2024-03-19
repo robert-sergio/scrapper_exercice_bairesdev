@@ -16,6 +16,6 @@ def test_get_data():
             assert instance.url == url
             assert instance.num_page == ""
 
-            instance.dogs()
+            instance.retrieve_images()
 
-            assert instance.message == "74 dog images captured from page "
+            assert instance.message == "74 images captured from page "
