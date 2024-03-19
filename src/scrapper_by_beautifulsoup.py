@@ -16,14 +16,15 @@ class ExtractorBeautifulSoup(FreeImages):
     def __str__(self) -> str:
         return self.status
 
-    def run(self, num_pages):
+    def run(self, num_pages, uri):
+        self.uri = uri
         self.iterate(num_pages)
-        self.status = f"finished, {len(self.itens)} dog images found in website"
+        self.status = f"finished, {len(self.itens)} images found in website"
 
     def iterate(self, num_pages):
         p = []
         for self.num_page in range(1, num_pages + 1):
-            b = Thread(target=self.dogs, args=[], daemon=False)
+            b = Thread(target=self.retrieve_images, args=[], daemon=False)
             b.start()
             p.append(b)
 

@@ -12,15 +12,16 @@ class FreeImages:
         self.message = ""
         self.login = "dummyEmail@email.com"
         self.password = "JVinxss6bhCkQSL"
-        self.url = "https://www.freeimages.com"
+        self.url = "https://www.freeimages.com/"
+        self.uri = ""
         self.login_url = "https://www.freeimages.com/signin"
         self.mapped_banners = ["Check our Plans", "iStock"]
 
         self.driver = Driver().init_driver()
 
-    def dogs(self):
+    def retrieve_images(self):
         num_page = self.num_page
-        url = f"https://www.freeimages.com/search/dogs/{num_page}"
+        url = f"{self.url}{self.uri}{num_page}"
         self.driver.get(url)
         divs = self.driver.find_elements(
             By.XPATH,
@@ -41,8 +42,8 @@ class FreeImages:
                 "date_happened": datetime.now(),
             }
             self.itens.append(data)
-        self.message = f"{len(divs)} dog images captured from page {num_page}"
-        logger.info(f"{len(divs)} dog images captured from page {num_page}")
+        self.message = f"{len(divs)} images captured from page {num_page}"
+        logger.info(f"{len(divs)} images captured from page {num_page}")
 
     def handle_login(self):
         self.driver.get(self.login_url)
