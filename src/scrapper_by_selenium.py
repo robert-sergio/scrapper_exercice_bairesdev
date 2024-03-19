@@ -1,4 +1,4 @@
-from src.seleniumScrapper.freeImages import FreeImages
+from src.selenium_scrapper.freeImages import FreeImages
 from src.export.export import Export
 from src.logger.logger import logger
 

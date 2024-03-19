@@ -1,4 +1,4 @@
-from src.seleniumScrapper.config.webdriver import Driver
+from src.selenium_scrapper.config.webdriver import Driver
 from selenium.webdriver.common.by import By
 from datetime import datetime
 from src.logger.logger import logger

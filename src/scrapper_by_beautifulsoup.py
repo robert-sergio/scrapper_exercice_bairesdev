@@ -1,5 +1,5 @@
 from threading import Thread
-from src.beautifulSoupScrapper.freeImages import FreeImages
+from src.beautifulsoup_scrapper.freeImages import FreeImages
 from src.export.export import Export
 from src.logger.logger import logger
 

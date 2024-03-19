@@ -1,4 +1,4 @@
-from src.playwrightScrapper.freeImages import FreeImages
+from src.playwright_scrapper.freeImages import FreeImages
 from src.export.export import Export
 from src.logger.logger import logger
 from playwright.sync_api import sync_playwright
