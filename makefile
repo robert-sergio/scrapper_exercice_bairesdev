@@ -18,7 +18,7 @@ _playwright:
 dependencies: _upgrade _poetry _poetry_install _poetry_shell _playwright
 
 test:
-	python -m pytest
+	python -m pytest --cov
 
 scrapp-beautifulsoup:
 	python main.py --scrapper_type beautifullSoup
