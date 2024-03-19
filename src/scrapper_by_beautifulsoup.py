@@ -4,7 +4,7 @@ from src.export.export import Export
 from src.logger.logger import logger
 
 
-class Extractor(FreeImages):
+class ExtractorBeautifulSoup(FreeImages):
     def __init__(self) -> None:
         self.itens = []
         self.status = "initiated"
