@@ -7,7 +7,7 @@ from src.logger.logger import logger
 class FreeImages:
 
     def __init__(self) -> None:
-        self.page = 1
+        self.num_page = 1
         self.itens = []
         self.message = ""
         self.login = "dummyEmail@email.com"
@@ -19,8 +19,8 @@ class FreeImages:
         self.driver = Driver().init_driver()
 
     def dogs(self):
-        page = self.page
-        url = f"https://www.freeimages.com/search/dogs/{page}"
+        num_page = self.num_page
+        url = f"https://www.freeimages.com/search/dogs/{num_page}"
         self.driver.get(url)
         divs = self.driver.find_elements(
             By.XPATH,
@@ -41,7 +41,8 @@ class FreeImages:
                 "date_happened": datetime.now(),
             }
             self.itens.append(data)
-        logger.info(f"{len(divs)} dog images captured from page {page}")
+        self.message = f"{len(divs)} dog images captured from page {num_page}"
+        logger.info(f"{len(divs)} dog images captured from page {num_page}")
 
     def handle_login(self):
         self.driver.get(self.login_url)

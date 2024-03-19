@@ -6,7 +6,7 @@ from src.logger.logger import logger
 
 class FreeImages:
     def __init__(self) -> None:
-        self.page = 1
+        self.num_page = 1
         self.header = {
             "Content-Type": "text/html; charset=utf-8",
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
@@ -16,8 +16,8 @@ class FreeImages:
         self.mapped_banners = ["Check our Plans"]
 
     def dogs(self):
-        page = self.page
-        url = f"https://www.freeimages.com/search/dogs/{page}"
+        num_page = self.num_page
+        url = f"https://www.freeimages.com/search/dogs/{num_page}"
         response = requests.get(url, headers=self.header)
         if response.status_code != 200:
             self.message = f"Could not get data: status_code {response.status_code}"
@@ -36,4 +36,4 @@ class FreeImages:
             }
             self.itens.append(data)
         self.message = f"{len(image_list)} dog images captured from website"
-        logger.info(f"{len(image_list)} dog images captured from page {page}")
+        logger.info(f"{len(image_list)} dog images captured from page {num_page}")

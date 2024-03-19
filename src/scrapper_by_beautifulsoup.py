@@ -22,7 +22,7 @@ class ExtractorBeautifulSoup(FreeImages):
 
     def iterate(self, num_pages):
         p = []
-        for self.page in range(1, num_pages + 1):
+        for self.num_page in range(1, num_pages + 1):
             b = Thread(target=self.dogs, args=[], daemon=False)
             b.start()
             p.append(b)

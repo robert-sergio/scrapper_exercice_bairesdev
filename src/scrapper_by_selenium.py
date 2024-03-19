@@ -22,7 +22,7 @@ class ExtractorSelenium(FreeImages):
         self.status = f"finished, {len(self.itens)} itens found in website"
 
     def iterate(self, num_pages):
-        for self.page in range(1, num_pages + 1):
+        for self.num_page in range(1, num_pages + 1):
             self.dogs()
 
     def export(self):

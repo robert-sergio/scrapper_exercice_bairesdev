@@ -32,4 +32,5 @@ class FreeImages:
                 "date_happened": datetime.now(),
             }
             self.itens.append(data)
+        self.message = f"{len(locators)} dog images captured from page {num_page}"
         logger.info(f"{len(locators)} dog images captured from page {num_page}")
