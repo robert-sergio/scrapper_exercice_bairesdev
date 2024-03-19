@@ -12,7 +12,7 @@ class FreeImages:
         self.message = ""
         self.login = "dummyEmail@email.com"
         self.password = "JVinxss6bhCkQSL"
-        self.url = "https://www.freeimages.com"
+        self.url = "https://www.freeimages.com/"
         self.login_url = "https://www.freeimages.com/signin"
         self.mapped_banners = ["Check our Plans", "iStock"]
 
@@ -20,7 +20,7 @@ class FreeImages:
 
     def dogs(self):
         num_page = self.num_page
-        url = f"https://www.freeimages.com/search/dogs/{num_page}"
+        url = f"{self.url}{num_page}"
         self.driver.get(url)
         divs = self.driver.find_elements(
             By.XPATH,

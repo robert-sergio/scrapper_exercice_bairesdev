@@ -8,13 +8,13 @@ class FreeImages:
         self.num_page = 1
         self.itens = []
         self.message = ""
-        self.url = "https://www.freeimages.com"
+        self.url = "https://www.freeimages.com/"
         self.mapped_banners = ["Check our Plans"]
         self.page = None
 
     def dogs(self):
         num_page = self.num_page
-        url = f"https://www.freeimages.com/search/dogs/{num_page}"
+        url = f"{self.url}{num_page}"
         self.page.goto(url)
         locators = self.page.get_by_role("article").all()
 

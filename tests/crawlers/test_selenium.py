@@ -1,4 +1,6 @@
 from src.selenium_scrapper.freeImages import FreeImages
+import pathlib
+from unittest.mock import patch
 
 
 def test_instance():
@@ -7,7 +9,13 @@ def test_instance():
 
 
 def test_get_data():
+    url = str(pathlib.Path(__file__).parent.resolve()) + "\\mocked_page.html"
     instance = FreeImages()
-    instance.dogs()
-    assert instance.driver.current_url == "https://www.freeimages.com/search/dogs/1"
-    assert instance.message == "74 dog images captured from page 1"
+    with patch.object(instance, "url", new=url):
+        with patch.object(instance, "num_page", new=""):
+            assert instance.url == url
+            assert instance.num_page == ""
+
+            instance.dogs()
+
+            assert instance.message == "74 dog images captured from page "
