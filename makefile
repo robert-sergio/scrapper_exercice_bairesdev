@@ -15,7 +15,7 @@ _poetry_shell:
 _playwright:
 	@playwright install
 
-dependencies: _upgrade _poetry _poetry_install _poetry_shell _playwright
+dependencies: _upgrade _poetry _poetry_install _playwright _poetry_shell
 
 test:
 	python -m pytest --cov
