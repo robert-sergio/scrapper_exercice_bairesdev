@@ -14,7 +14,7 @@ class FreeImages:
         self.password = "JVinxss6bhCkQSL"
         self.url = "https://www.freeimages.com"
         self.login_url = "https://www.freeimages.com/signin"
-        self.mapped_banners = ["Check our Plans"]
+        self.mapped_banners = ["Check our Plans", "iStock"]
 
         self.driver = Driver().init_driver()
 
