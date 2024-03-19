@@ -1,6 +1,7 @@
 import argparse
-from src.scrapperByBeautifulSoup import Extractor
-from src.scrapperBySelenium import ExtractorSelenium
+from src.scrapper_by_beautifulsoup import ExtractorBeautifulSoup
+from src.scrapper_by_selenium import ExtractorSelenium
+from src.scrapper_by_playwright import ExtractorPlayWright
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -13,17 +14,20 @@ class Scrapper:
 
     def __init__(self, scrapper_type) -> None:
         self.scrapper = scrapper_type
+        self.num_pages = 15
 
     def _strategy(self):
         if self.scrapper == "beautifullSoup":
-            self.extractor = Extractor
+            self.extractor = ExtractorBeautifulSoup
         elif self.scrapper == "selenium":
             self.extractor = ExtractorSelenium
+        elif self.scrapper == "playwright":
+            self.extractor = ExtractorPlayWright
 
     def execute(self):
         self._strategy()
         bot = self.extractor()
-        bot.run(num_pages=15)
+        bot.run(self.num_pages)
         bot.export()
 
 

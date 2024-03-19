@@ -12,7 +12,10 @@ _poetry_install:
 _poetry_shell:
 	@poetry shell
 
-dependencies: _upgrade _poetry _poetry_install _poetry_shell
+_playwright:
+	@playwright install
+
+dependencies: _upgrade _poetry _poetry_install _poetry_shell _playwright
 
 test:
 	python -m pytest --cov
@@ -22,5 +25,8 @@ scrapp-beautifulsoup:
 
 scrapp-selenium:
 	python main.py --scrapper_type selenium
+
+scrapp-playwright:
+	python main.py --scrapper_type playwright
 
 scrapp-all: scrapp-beautifulsoup scrapp-selenium
