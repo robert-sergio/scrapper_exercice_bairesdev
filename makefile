@@ -29,4 +29,4 @@ scrapp-selenium:
 scrapp-playwright:
 	python main.py --scrapper_type playwright
 
-scrapp-all: scrapp-beautifulsoup scrapp-selenium
+scrapp-all: scrapp-beautifulsoup scrapp-selenium scrapp-playwright

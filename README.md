@@ -9,6 +9,7 @@
 * Requests
 * BeautifulSoap
 * Selenium
+* Playwright
 
 ### How to run this project
 
@@ -32,10 +33,6 @@ The advantages of using this approach is the high speed and simple usage.
 
 In this approach I'am collecting all the data from the site and also developing the login 
 
-
-### Other possible approaches ( not implemented )
-
-* There are also other libraries available to scrapp websites, like Pyppeteer and Playwright. Both of them has the async approach but in this use case there's no need to follow this approach.
 
 #### Data Scrapped
 
