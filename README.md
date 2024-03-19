@@ -13,15 +13,23 @@
 
 ### How to run this project
 
-* Run make dependencies to install python dependencies
-* Run make scrapp to execute the scrappers
-* Run make tests to execute tests
+* Run ``make dependencies`` to install python dependencies
+* Run ``make scrapp-all`` to execute all scrappers
+* Run ``make scrapp-selenium`` to execute selenium scrappers
+* Run ``make scrapp-playwright`` to execute selenium scrappers
+* Run ``make scrapp-beautifulsoup`` to execute selenium scrappers
+* Run ``make tests`` to execute tests
 
 ## About this Project ?
 
-In this project I developed two different approaches to capture data from the freeimages website, by using BeautifulSoup and by using Selenium Webdriver. 
-Both approaches brings 15 pages of the website and a total of ~1000 itens.
-I also implemented unit tests to test the Requests Scrapper. Run make test to check it out.
+In this project I developed three different approaches to capture data from the freeimages website, by using BeautifulSoup, Selenium Webdriver and playwright.
+
+Both approaches brings 15 pages of the website and retrieving and storing a total of ~1000 itens on a Sqlite.
+
+You can execute any scrapper by running the ``main.py`` script passing the name of the scrapper as arguments
+
+Example : ``python main.py --scrapper_type selenium``
+
 
 #### Scrapper using Python Requests and BeautifulSoup:
 
@@ -31,12 +39,25 @@ The advantages of using this approach is the high speed and simple usage.
 
 #### Scrapper using Selenium
 
-In this approach I'am collecting all the data from the site and also developing the login 
+In this approach I'am collecting all data from the 15 pages of the site as well, but using a serial approach, one page at once.
+
+Using selenium is a good approach when websites uses captcha protections, because it gives us the possibility to break captcha by using captcha breakers like 2captcha.
+
+I also developed a login access demonstration to the website, putting dummy credentials and clicking in the Login Button.
+
+### Scrapper using Playwright
+
+Playwright gives possibilities of async scrapping. I did not used the async approach in this project but it's a very interesting tool.
+
 
 #### Data Scrapped
 
-The Sqlite database is saved in db folder. There are two tables in the database to sepparate data captured by Selenium and by Requests.
-The scrappers are retrieving img_url, alt and the page of the image and saving the current_time too.
+The Sqlite database is saved in ``db`` folder. 
+
+The scrappers are persisting the following data in the db ``img_url``, ``alt``, ``page``, ``date_happened``.
+
+There are three tables in the db ``crawlers_request``, ``crawlers_selenium`` and ``crawlers_beautifulsoup``.
+
 
 #### Unit Tests
 

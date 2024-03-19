@@ -9,7 +9,7 @@ class ExtractorBeautifulSoup(FreeImages):
         self.itens = []
         self.status = "initiated"
         self.path_db = "db/db_crawlers.sqlite"
-        self.tb_db = "crawlers_request"
+        self.tb_db = "crawlers_beautifulsoup"
         super().__init__()
         logger.info("Started Requests & BeautifulSoup Crawler")
 
