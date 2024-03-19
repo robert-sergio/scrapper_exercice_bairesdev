@@ -4,7 +4,7 @@
 
 ### Setup
 
-* Python Verion 3.9.12
+* Python Version 3.9.12
 * Poetry
 * Requests
 * BeautifulSoap
