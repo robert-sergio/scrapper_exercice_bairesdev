@@ -33,11 +33,15 @@ The advantages of using this approach is the high speed and simple usage.
 
 In this approach I'am collecting all the data from the site and also developing the login 
 
-
 #### Data Scrapped
 
 The Sqlite database is saved in db folder. There are two tables in the database to sepparate data captured by Selenium and by Requests.
 The scrappers are retrieving img_url, alt and the page of the image and saving the current_time too.
+
+#### Unit Tests
+
+I have developed developed unit tests using pytest and got 98% of coverage on the project.
+run make test to verify unit tests
 
 ## Questions !
 
