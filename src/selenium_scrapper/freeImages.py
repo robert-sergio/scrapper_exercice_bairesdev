@@ -12,7 +12,7 @@ class FreeImages:
         self.message = ""
         self.login = "dummyEmail@email.com"
         self.password = "JVinxss6bhCkQSL"
-        self.url = "https://www.freeimages.com/"
+        self.url = "https://www.freeimages.com/search/dogs/"
         self.login_url = "https://www.freeimages.com/signin"
         self.mapped_banners = ["Check our Plans", "iStock"]
 

@@ -8,7 +8,7 @@ class FreeImages:
         self.num_page = 1
         self.itens = []
         self.message = ""
-        self.url = "https://www.freeimages.com/"
+        self.url = "https://www.freeimages.com/search/dogs/"
         self.mapped_banners = ["Check our Plans"]
         self.page = None
 
