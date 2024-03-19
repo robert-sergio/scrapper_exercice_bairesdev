@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "scrapper-exercice-bairesdev"
+name = "scrapper-exercise-bairesdev"
 version = "0.1.0"
 description = ""
 authors = ["Robert <robert.sergio.eng@gmail.com>"]
