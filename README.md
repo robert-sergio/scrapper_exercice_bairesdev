@@ -10,6 +10,7 @@
 * BeautifulSoap
 * Selenium
 * Playwright
+* ultralytics
 
 ### How to run this project
 
