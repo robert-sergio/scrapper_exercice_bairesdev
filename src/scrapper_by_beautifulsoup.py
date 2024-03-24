@@ -6,7 +6,7 @@ from src.check_images.yolo_verification import Detection
 
 
 class ExtractorBeautifulSoup(FreeImages):
-    def __init__(self, validate) -> None:
+    def __init__(self, validate=False) -> None:
         self.validate = validate
         self.itens = []
         self.status = "initiated"

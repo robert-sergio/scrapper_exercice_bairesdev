@@ -8,11 +8,11 @@ def test_class_instance():
 
 def test_method_run():
     instance = ExtractorBeautifulSoup()
-    instance.run(1, "search/dogs/")
-    assert str(instance) == "finished, 73 images found in website"
+    instance.run(1, "dogs/")
+    assert str(instance) == "finished, 60 images found in website"
 
 
 def test_method_crawler():
     instance = ExtractorBeautifulSoup()
-    instance.run(1, "search/dogs/")
-    assert str(instance) == "finished, 73 images found in website"
+    instance.run(1, "dogs/")
+    assert str(instance) == "finished, 60 images found in website"

@@ -19,6 +19,7 @@ class FreeImages:
         self.url = "https://www.freeimages.com/search/"
         self.uri = ""
         self.name_mapper = {"dogs/": "dog"}
+        self.validate = False
 
     def retrieve_images(self):
         num_page = self.num_page

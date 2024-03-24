@@ -43,5 +43,4 @@ def test_response_parsing(mock_get_class):
 
     instance = FreeImages()
     instance.retrieve_images()
-    print(instance.message)
     assert instance.message == "60 images captured from website"
