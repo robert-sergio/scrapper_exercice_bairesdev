@@ -5,13 +5,14 @@ from src.logger.logger import logger
 
 class ExtractorSelenium(FreeImages):
 
-    def __init__(self) -> None:
+    def __init__(self, validate=False) -> None:
+        super().__init__()
+        self.validate = validate
         self.itens = []
         self.status = "initiated"
         self.path_db = "db/db_crawlers.sqlite"
         self.tb_db = "crawlers_selenium"
         logger.info("Started Selenium Crawler")
-        super().__init__()
 
     def __str__(self) -> str:
         return self.status

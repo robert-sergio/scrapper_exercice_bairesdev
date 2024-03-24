@@ -22,7 +22,7 @@ class FreeImagesScrapper:
     def __init__(self, args) -> None:
         self.scrapper = args.scrapper_type
         self.validate = bool(args.validate)
-        self.num_pages = 1
+        self.num_pages = 17
 
     def _strategy(self):
         if self.scrapper == "beautifullSoup":

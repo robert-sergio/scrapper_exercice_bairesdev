@@ -6,13 +6,14 @@ from playwright.sync_api import sync_playwright
 
 class ExtractorPlayWright(FreeImages):
 
-    def __init__(self) -> None:
+    def __init__(self, validate=False) -> None:
+        super().__init__()
+        self.validate = validate
         self.itens = []
         self.status = "initiated"
         self.path_db = "db/db_crawlers.sqlite"
         self.tb_db = "crawlers_playwright"
         logger.info("Started Playwright Crawler")
-        super().__init__()
 
     def __str__(self) -> str:
         return self.status

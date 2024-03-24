@@ -20,14 +20,17 @@ class Detection:
         self.model = YOLO(pt_path)
 
     def check(self, img, object_names):
-        for result in self.model(img, stream=False):
+        try:
+            results = self.model(img, stream=False)
+        except Exception as ex:
+            return False
+
+        for result in results:
             result.boxes
             if result.summary() is None:
-                os.remove(result.path)
                 return False
 
             if len(result.summary()) == 0:
-                os.remove(result.path)
                 return False
             name = result.summary()[0].get("name")
             confidence = round(result.summary()[0].get("confidence"), 2)
@@ -35,10 +38,8 @@ class Detection:
                 continue
 
             if confidence > self.confidence:
-                os.remove(result.path)
                 return True
 
-        os.remove(result.path)
         return False
 
 

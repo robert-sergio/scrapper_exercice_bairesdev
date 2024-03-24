@@ -126,6 +126,10 @@ It took a lot of time more to crawl items, but it is a good approach to have sur
 
 detected as a horse
 
+![alt text](imgs/false_positive7.png "Positive")
+
+detected as a dog
+
 ![alt text](imgs/false_positive2.png "Positive")
 
 detected as a bear

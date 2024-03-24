@@ -12,7 +12,7 @@ class FreeImages:
         self.message = ""
         self.login = "dummyEmail@email.com"
         self.password = "JVinxss6bhCkQSL"
-        self.url = "https://www.freeimages.com/"
+        self.url = "https://www.freeimages.com/search/"
         self.uri = ""
         self.login_url = "https://www.freeimages.com/signin"
         self.mapped_banners = ["Check our Plans", "iStock"]
@@ -20,6 +20,7 @@ class FreeImages:
         self.driver = Driver().init_driver()
 
     def retrieve_images(self):
+        skipped = 0
         num_page = self.num_page
         url = f"{self.url}{self.uri}{num_page}"
         self.driver.get(url)
@@ -28,13 +29,18 @@ class FreeImages:
             '//*[@id="content-wrapper"]/div[3]/div[2]/div[2]/div',
         )
 
-        for div in divs:
+        if len(divs) == 1 and divs[0].text == "No contents yet.":
+            self.message = "No data to scrapp"
+            return
 
+        for div in divs:
             alt = div.find_element(By.TAG_NAME, "img").get_attribute("alt")
             src = div.find_element(By.TAG_NAME, "img").get_attribute("src")
 
-            if alt in self.mapped_banners:
+            if alt in self.mapped_banners or "http" not in src:
+                skipped = skipped + 1
                 continue
+
             data = {
                 "page": url,
                 "url": src,
@@ -42,8 +48,8 @@ class FreeImages:
                 "date_happened": datetime.now(),
             }
             self.itens.append(data)
-        self.message = f"{len(divs)} images captured from page {num_page}"
-        logger.info(f"{len(divs)} images captured from page {num_page}")
+        self.message = f"{len(divs)-skipped} images captured from page {num_page}"
+        logger.info(f"{len(divs)-skipped} images captured from page {num_page}")
 
     def handle_login(self):
         self.driver.get(self.login_url)

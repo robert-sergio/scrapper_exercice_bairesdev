@@ -1,4 +1,6 @@
 import requests
+import os
+import glob
 import shutil
 import pathlib
 from bs4 import BeautifulSoup
@@ -21,8 +23,8 @@ class FreeImages:
         self.name_mapper = {"dogs/": "dog"}
         self.validate = False
 
-    def retrieve_images(self):
-        num_page = self.num_page
+    def retrieve_images(self, num_page):
+        num_page = num_page
         skipped = 0
         url = f"{self.url}{self.uri}{num_page}"
         response = requests.get(url, headers=self.header)
@@ -37,6 +39,7 @@ class FreeImages:
             logger.info(f"No images on page {num_page}")
             return
         for item in image_list:
+            num_item = image_list.index(item)
             src = item.find("img").attrs["src"]
             alt = item.find("img").attrs["alt"]
 
@@ -45,7 +48,7 @@ class FreeImages:
                 continue
 
             if self.validate:
-                if not self.validate_yolo(src):
+                if not self.validate_yolo(src, num_page, num_item):
                     skipped = skipped + 1
                     continue
 
@@ -59,10 +62,12 @@ class FreeImages:
         self.message = f"{len(image_list)-skipped} images captured from website"
         logger.info(f"{len(image_list)-skipped} images captured from page {num_page}")
 
-    def validate_yolo(self, src):
-        print(src)
+    def validate_yolo(self, src, num_page, num_item):
         response = requests.get(src, stream=True)
-        temp_path = str(pathlib.Path(__file__).parent.resolve()) + "/imgs/img.png"
+        temp_path = (
+            str(pathlib.Path(__file__).parent.resolve())
+            + f"/imgs/img_{num_page}_{num_item}.png"
+        )
         with open(temp_path, "wb") as out_file:
             shutil.copyfileobj(response.raw, out_file)
 
@@ -70,3 +75,9 @@ class FreeImages:
             self.message = f"This image is not from a {self.name_mapper.get(self.uri)}"
             return False
         return True
+
+    def delete_imgs(self):
+        path = str(pathlib.Path(__file__).parent.resolve()) + f"/imgs/*.png"
+        files = glob.glob(path)
+        for file in files:
+            os.remove(file)
