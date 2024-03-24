@@ -19,16 +19,22 @@ class Detection:
             )
         self.model = YOLO(pt_path)
 
-    def train(self):
-        self.model.train(data="imagewoof160", epochs=100, imgsz=224)
-        print("Finished")
-
     def check(self, img, object_names):
         for result in self.model(img, stream=False):
             result.boxes
+            if result.summary() is None:
+                os.remove(result.path)
+                return False
+
+            if len(result.summary()) == 0:
+                os.remove(result.path)
+                return False
             name = result.summary()[0].get("name")
             confidence = round(result.summary()[0].get("confidence"), 2)
-            if name in object_names and confidence > self.confidence:
+            if name not in object_names:
+                continue
+
+            if confidence > self.confidence:
                 os.remove(result.path)
                 return True
 
@@ -38,9 +44,3 @@ class Detection:
 
 if __name__ == "__main__":
     check = Detection()
-    check.train()
-    # check.check(
-    #     img="https://img.freepik.com/free-photo/isolated-happy-smiling-dog-white-background-portrait-4_1562-693.jpg",
-    #     # "C:\\Users\\mirla\\OneDrive\\Documentos\\CODES\\scrapper_exercice_bairesdev\\src\\check_images\\imgs\\dog.jpg",
-    #     object_names=["dog"],
-    # )

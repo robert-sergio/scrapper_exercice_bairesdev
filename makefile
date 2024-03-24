@@ -20,6 +20,9 @@ dependencies: _upgrade _poetry _poetry_install _playwright _poetry_shell
 test:
 	python -m pytest --cov
 
+scrapp-beautifulsoup-yolo:
+	python main.py --scrapper_type beautifullSoup --validate True
+
 scrapp-beautifulsoup:
 	python main.py --scrapper_type beautifullSoup
 

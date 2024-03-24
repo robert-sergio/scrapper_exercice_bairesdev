@@ -86,3 +86,55 @@ run make test to verify unit tests
 #### Cloud Way
 
 * We can use an AWS lambda to do the job. AWS lambdas are ephemeral and their IP changes across the time, so we can scale the scrapping avoiding the IP blocking.
+
+
+# Aditional Features! Yolo Validation
+
+I added an optional feature in the project in order to validate if all the images from website are really from dogs and not from prairie dogs, cerberus or hot dogs.
+
+I am using ultralytics library to run YOLO to detect dogs on the scrapped images.
+
+The model I am using is a general purpose model and needs to be trained on a dog dataset to improve it.
+
+## Results of using yolo
+
+The tests below were taken by crawling only the first page.
+
+> www.freeimages.com/search/dogs/1
+
+### Without Yolo 1 Request per image: 
+
+Took 1 second to bring 60 images. But there are 3 images from no dogs. 2 prairie dogs and 1 cerberus.
+
+
+### With Yolo, 2 Requests per image + detection: 
+
+Took 15 seconds to crawl 47 items. With this pretrained model, 3 were positive and 6 were false positives.
+It took a lot of time more to crawl items, but it is a good approach to have sure that all images are from dogs.
+
+## Positives, No dog Images:
+
+![alt text](imgs/positive.png "Prairie Dog")
+![alt text](imgs/positive2.png "Prairie Dog")
+![alt text](imgs/positive3.png "Cerberus")
+
+
+## False Positives, dog Images misundertood by the model ( Need further training on dog Dataset ):
+
+![alt text](imgs/false_positive.png "Positive")
+![alt text](imgs/false_positive2.png "Positive")
+![alt text](imgs/false_positive3.png "Positive")
+![alt text](imgs/false_positive4.png "Positive")
+![alt text](imgs/false_positive5.png "Positive")
+![alt text](imgs/false_positive6.png "Positive")
+
+
+
+## Command to run with Yolo
+
+* Run ``make scrapp-beautifulsoup-yolo`` to run the beautifull soup with Yolo
+
+
+## Future Improvements about Yolo :
+
+* Find a good dog dataset to train 
