@@ -122,11 +122,28 @@ It took a lot of time more to crawl items, but it is a good approach to have sur
 ## False Positives, dog Images misundertood by the model ( Need further training on dog Dataset ):
 
 ![alt text](imgs/false_positive.png "Positive")
+
+detected as a horse
+
 ![alt text](imgs/false_positive2.png "Positive")
+
+detected as a bear
+
 ![alt text](imgs/false_positive3.png "Positive")
+
+detected as a bird
+
 ![alt text](imgs/false_positive4.png "Positive")
+
+detected as a bear
+
 ![alt text](imgs/false_positive5.png "Positive")
+
+detected as a horse
+
 ![alt text](imgs/false_positive6.png "Positive")
+
+detected as a horse
 
 
 
