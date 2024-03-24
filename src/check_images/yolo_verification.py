@@ -6,7 +6,7 @@ from ultralytics import YOLO
 class Detection:
 
     def __init__(self) -> None:
-        self.confidence = 0.7
+        self.confidence = 0.4
         if os.name == "posix":
             pt_path = (
                 "file://"
@@ -19,8 +19,12 @@ class Detection:
             )
         self.model = YOLO(pt_path)
 
+    def train(self):
+        self.model.train(data="imagewoof160", epochs=100, imgsz=224)
+        print("Finished")
+
     def check(self, img, object_names):
-        for result in self.model(img):
+        for result in self.model(img, stream=False):
             result.boxes
             name = result.summary()[0].get("name")
             confidence = round(result.summary()[0].get("confidence"), 2)
@@ -34,8 +38,9 @@ class Detection:
 
 if __name__ == "__main__":
     check = Detection()
-    check.check(
-        img="https://img.freepik.com/free-photo/isolated-happy-smiling-dog-white-background-portrait-4_1562-693.jpg",
-        # "C:\\Users\\mirla\\OneDrive\\Documentos\\CODES\\scrapper_exercice_bairesdev\\src\\check_images\\imgs\\dog.jpg",
-        object_names=["dog"],
-    )
+    check.train()
+    # check.check(
+    #     img="https://img.freepik.com/free-photo/isolated-happy-smiling-dog-white-background-portrait-4_1562-693.jpg",
+    #     # "C:\\Users\\mirla\\OneDrive\\Documentos\\CODES\\scrapper_exercice_bairesdev\\src\\check_images\\imgs\\dog.jpg",
+    #     object_names=["dog"],
+    # )

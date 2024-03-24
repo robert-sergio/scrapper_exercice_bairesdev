@@ -2,14 +2,18 @@ from threading import Thread
 from src.beautifulsoup_scrapper.freeImages import FreeImages
 from src.export.export import Export
 from src.logger.logger import logger
+from src.check_images.yolo_verification import Detection
 
 
 class ExtractorBeautifulSoup(FreeImages):
-    def __init__(self) -> None:
+    def __init__(self, validate) -> None:
+        self.validate = validate
         self.itens = []
         self.status = "initiated"
         self.path_db = "db/db_crawlers.sqlite"
         self.tb_db = "crawlers_beautifulsoup"
+        if self.validate:
+            self.yolo = Detection()
         super().__init__()
         logger.info("Started Requests & BeautifulSoup Crawler")
 
