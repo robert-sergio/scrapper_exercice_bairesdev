@@ -31,6 +31,10 @@ class FreeImages:
         soup = BeautifulSoup(response.content, "html.parser")
         image_gallery = soup.find("div", {"class": "grid-container"})
         image_list = image_gallery.find_all("div", {"class": "grid-item"})
+        if len(image_list) == 0:
+            self.message = f"No images on page {num_page}"
+            logger.info(f"No images on page {num_page}")
+            return
         for item in image_list:
             src = item.find("img").attrs["src"]
             alt = item.find("img").attrs["alt"]
